@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- عنوان الصفحة محسّن لمحركات البحث -->
+    <title>فنادق فاخرة في السعودية - دربك</title>
+
+    <!-- وصف الصفحة لمحركات البحث -->
+    <meta name="description" content="اكتشف فنادق فاخرة مع دربك في جدة، مكة، المدينة. حجز سريع وآمن، خدمات ممتازة وأسعار تنافسية.">
+
+    <!-- كلمات مفتاحية مستهدفة -->
+    <meta name="keywords" content="فنادق فاخرة, حجز فنادق, دربك, فنادق جدة, فنادق مكة, فنادق المدينة, إقامة فاخرة">
+
+    <!-- Open Graph لمحركات البحث الاجتماعية -->
+    <meta property="og:title" content="فنادق فاخرة في السعودية - دربك">
+    <meta property="og:description" content="احجز أفضل الفنادق الفاخرة مع دربك في جدة، مكة، المدينة. تجربة مريحة وآمنة.">
+    <meta property="og:image" content="https://darbak.site/images/hotels-og.jpg">
+    <meta property="og:url" content="https://darbak.site/hotels">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="فنادق فاخرة في السعودية - دربك">
+    <meta name="twitter:description" content="احجز أفضل الفنادق الفاخرة مع دربك في جدة، مكة، المدينة. تجربة مريحة وآمنة.">
+    <meta name="twitter:image" content="https://darbak.site/images/hotels-twitter.jpg">
+
+    <!-- لون شريط الهاتف -->
+    <meta name="theme-color" content="#34495e">
+
+    <!-- خطوط وأيقونات -->
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .hidden { display: none !important; }
+        .lang-switch { display: inline-flex; gap: 6px; align-items: center; }
+        .lang-btn { padding: 6px 10px; border-radius: 6px; border: 1px solid transparent; cursor: pointer; font-weight: 700; }
+        .lang-btn.active { background: #E5C100; color: #111; }
+        .lang-btn:not(.active) { background: transparent; color: inherit; }
+        .lang-ar { font-family: 'Almarai', sans-serif; }
+        .lang-en { font-family: 'Roboto', sans-serif; }
+        .dark-btn { background: transparent; border: 1px solid transparent; cursor: pointer; font-size: 18px; padding: 6px; border-radius: 6px; }
+
+        .container { max-width: 1300px; margin: 0 auto; padding: 30px 15px; margin-top: 30px; }
+        h2 {
+            color: var(--navy);
+            text-align: right;
+            border-bottom: 3px solid var(--beige);
+            padding-bottom: 12px;
+            margin: 40px 0 25px;
+            font-size: 1.9em;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            transition: all 0.4s;
+        }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.18); }
+        .card img { width: 100%; height: 220px; object-fit: cover; }
+        .card-body { padding: 20px; text-align: center; }
+        .card-title { font-size: 1.25em; margin-bottom: 15px; color: var(--navy); font-weight: bold; }
+        .btn {
+            background-color: var(--beige);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .btn:hover { background-color: var(--beige-light); }
+        .hotel-nav .nav-pills .nav-link {
+            background: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+        .hotel-nav .nav-pills .nav-link.active {
+            background: var(--beige);
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .hotel-nav .nav-pills {
+                flex-direction: column;
+            }
+            .hotel-nav .nav-pills .nav-link {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header-style-01">
+    <div class="agency_topbar">
+        <div class="container topbar-container">
+            <ul class="d-flex mb-0 align-items-center gap-3">
+                <li><i class="fa-solid fa-envelope text-primary"></i> majidmohammed1545@gmail.com</li>
+                <li><i class="fa-solid fa-phone text-primary"></i> <span dir="ltr">+966 54 630 1944</span></li>
+            </ul>
+            <ul class="header-social d-flex mb-0 align-items-center gap-3">
+                <li><a href="#"><i class="lab la-whatsapp"></i></a></li>
+                <li><a href="#"><i class="lab la-snapchat-ghost"></i></a></li>
+                <li><a href="#"><i class="lab la-instagram"></i></a></li>
+                <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
+            </ul>
+            <div class="lang-switch">
+                <button class="lang-btn" data-lang="ar" id="btn-ar">العربية</button>
+                <button class="lang-btn" data-lang="en" id="btn-en">English</button>
+            </div>
+            <button id="dark-mode-toggle" class="dark-btn" title="تبديل الوضع الليلي">🌙</button>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="imags/7ba80379-0779-4397-b93c-e4d06f0ca2aa.webp" alt="دربك" class="site-logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html#home" data-i18n="nav.home">الرئيسية</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="hotels.html" data-i18n="nav.hotels">فنادق</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+    <div class="container text-center" style="margin-top: 20px;">
+        <a href="index.html" class="btn btn-primary" data-i18n="nav.back.home">العودة للرئيسية</a>
+    </div>
+
+    <!-- شريط تنقل للفنادق -->
+    <nav class="hotel-nav" style="background: var(--section-bg); padding: 15px 0; margin-top: 20px;">
+        <div class="container">
+            <ul class="nav nav-pills justify-content-center" id="hotel-nav-tabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="makkah-tab" data-bs-toggle="pill" href="#makkah" role="tab" aria-controls="makkah" aria-selected="true" data-i18n="hotels.mecca">فنادق مكة المكرمة</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="madinah-tab" data-bs-toggle="pill" href="#madinah" role="tab" aria-controls="madinah" aria-selected="false" data-i18n="hotels.medina">فنادق المدينة المنورة</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top: 50px;">
+        <div class="tab-content" id="hotel-tabs-content">
+
+        <!-- <h2 id="riyadh">فنادق الرياض</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://cache.marriott.com/content/dam/marriott-renditions/RUHJB/ruhjb-exterior-0314-hor-clsc.jpg?output-quality=70" alt="JW Marriott Riyadh">
+                <div class="card-body">
+                    <div class="card-title">فندق JW Marriott الرياض - فخامة ليلية</div>
+                    <a href="https://wa.me/966546301944?text=مرحبا، أريد حجز غرفة في فندق JW Marriott الرياض" class="btn" target="_blank">حجز عبر واتساب</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://www.ahstatic.com/photos/b4x1_ho_00_p_1024x768.jpg" alt="Mövenpick Riyadh">
+                <div class="card-body">
+                    <div class="card-title">فندق موفنبيك وريزيدنس الرياض</div>
+                    <a href="https://wa.me/966546301944?text=مرحبا، أريد حجز غرفة في فندق موفنبيك الرياض" class="btn" target="_blank">حجز عبر واتساب</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://pix10.agoda.net/hotelImages/548852/-1/b03126a039117ba7285fd32305ad80b2.jpg?ce=0&s=1024x768" alt="Narcissus Riyadh">
+                <div class="card-body">
+                    <div class="card-title">فندق نارسيسوس وسبا الرياض</div>
+                    <a href="https://wa.me/966546301944?text=مرحبا، أريد حجز غرفة في فندق نارسيسوس الرياض" class="btn" target="_blank">حجز عبر واتساب</a>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="tab-pane fade show active" id="makkah" role="tabpanel" aria-labelledby="makkah-tab">
+            <h2 data-i18n="hotels.mecca">فنادق مكة المكرمة</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="https://ik.imgkit.net/3vlqs5axxjf/external/https://www.cfmedia.vfmleonardo.com/imageRepo/0/0/199/573/500/gflAJi4YG022jaYV6pE8nw_a5f2_ho_00_p_3000x2250_O.jpg?tr=w-1200%2Cfo-auto" alt="Fairmont Clock Tower">
+                    <div class="card-body">
+                        <div class="card-title" data-i18n="hotel.fairmont.clock">فندق فيرمونت برج الساعة مكة</div>
+                        <a href="https://wa.me/966546301944?text=مرحبا، أريد حجز غرفة في فندق فيرمونت برج الساعة مكة" class="btn" target="_blank" data-i18n="hotels.book">حجز عبر واتساب</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://makkah-madinah.accor.com/wp-content/uploads/2024/08/Fairmont-Makkah-Hotel-Clock-Royal-Tower-Fairmont-City-View-room.jpg" alt="Fairmont Kaaba View">
+                    <div class="card-body">
+                        <div class="card-title" data-i18n="hotel.fairmont.kaaba">غرفة إطلالة على الكعبة - فيرمونت مكة</div>
+                        <a href="https://wa.me/966546301944?text=مرحبا، أريد حجز غرفة إطلالة كعبة في فندق فيرمونت مكة" class="btn" target="_blank" data-i18n="hotels.book">حجز عبر واتساب</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://q-xx.bstatic.com/xdata/images/hotel/max500/66509773.jpg?k=3ea67aca592f2d242cf09c62e7090bb2f8207715e459e240866b896c01d2f365&o=" alt="Pullman Zamzam Makkah">
+                    <div class="card-body">
+                        <div class="card-title" data-i18n="hotel.pullman.zamzam">فندق بولمان زمزم مكة</div>
+                        <a href="https://wa.me/966546301944?text=مرحبا، أريد حجز غرفة في فندق بولمان زمزم مكة" class="btn" target="_blank" data-i18n="hotels.book">حجز عبر واتساب</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="madinah" role="tabpanel" aria-labelledby="madinah-tab">
+            <h2 data-i18n="hotels.medina">فنادق المدينة المنورة</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="https://ik.imgkit.net/3vlqs5axxjf/external/https://www.cfmedia.vfmleonardo.com/imageRepo/7/0/123/230/272/b4m6_ho_00_p_3000x2250_O.jpg?tr=w-1200%2Cfo-auto" alt="Anwar Al Madinah">
+                    <div class="card-body">
+                        <div class="card-title" data-i18n="hotel.anwar.madinah">فندق أنوار المدينة موفنبيك</div>
+                        <a href="https://wa.me/966546301944?text=مرحبا، أريد حجز غرفة في فندق أنوار المدينة موفنبيك" class="btn" target="_blank" data-i18n="hotels.book">حجز عبر واتساب</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://ik.imgkit.net/3vlqs5axxjf/external/https://media.iceportal.com/60037/photos/85990475_XL.jpg?tr=w-1200%2Cfo-auto" alt="Hilton Madinah">
+                    <div class="card-body">
+                        <div class="card-title" data-i18n="hotel.hilton.madinah">فندق هيلتون المدينة</div>
+                        <a href="https://wa.me/966546301944?text=مرحبا، أريد حجز غرفة في فندق هيلتون المدينة" class="btn" target="_blank" data-i18n="hotels.book">حجز عبر واتساب</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://www.ahstatic.com/photos/b9x5_ho_00_p_1024x768.jpg" alt="Sofitel Shahd Al Madinah">
+                    <div class="card-body">
+                        <div class="card-title" data-i18n="hotel.sofitel.shahd">فندق سوفيتيل شهد المدينة</div>
+                        <a href="https://wa.me/966546301944?text=مرحبا، أريد حجز غرفة في فندق سوفيتيل شهد المدينة" class="btn" target="_blank" data-i18n="hotels.book">حجز عبر واتساب</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/db/19/6f/exterior.jpg?w=900&h=500&s=1" alt="Le Méridien Madinah">
+                    <div class="card-body">
+                        <div class="card-title" data-i18n="hotel.le.meridien">فندق لو ميريديان المدينة</div>
+                        <a href="https://wa.me/966546301944?text=مرحبا، أريد حجز غرفة في فندق لو ميريديان المدينة" class="btn" target="_blank" data-i18n="hotels.book">حجز عبر واتساب</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0a/44/32/3d/hotel-exterior.jpg?w=900&h=500&s=1" alt="Pullman Zamzam Madinah">
+                    <div class="card-body">
+                        <div class="card-title" data-i18n="hotel.pullman.zamzam.madinah">فندق بولمان زمزم المدينة</div>
+                        <a href="https://wa.me/966546301944?text=مرحبا، أريد حجز غرفة في فندق بولمان زمزم المدينة" class="btn" target="_blank" data-i18n="hotels.book">حجز عبر واتساب</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/22/07/30/31/dar-al-taqwa-hotel.jpg?w=900&h=500&s=1" alt="Dar Al Taqwa Madinah">
+                    <div class="card-body">
+                        <div class="card-title" data-i18n="hotel.dar.taqwa">فندق دار التقوى المدينة</div>
+                        <a href="https://wa.me/966546301944?text=مرحبا، أريد حجز غرفة في فندق دار التقوى المدينة" class="btn" target="_blank" data-i18n="hotels.book">حجز عبر واتساب</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="imags/7ba80379-0779-4397-b93c-e4d06f0ca2aa.webp" alt="دربك" loading="lazy">
+                <p id="footer-desc-ar" data-en="Luxury and safe transport services in Saudi Arabia">لخدمات النقل الفاخر والآمن في المملكة العربية السعودية</p>
+
+            </div>
+            <div class="footer-links">
+                <h3 id="quick-links-ar" data-i18n="footer.quickLinks">روابط سريعة</h3>
+                <ul>
+                    <li><a href="index.html#home" id="home-link-ar" data-i18n="footer.home">الرئيسية</a></li>
+                    <li><a href="index.html#quick-services" id="services-link-ar" data-i18n="footer.services">خدماتنا</a></li>
+                    <li><a href="index.html#fleet-section" id="fleet-link-ar" data-i18n="footer.fleet">الأسطول</a></li>
+                    <li><a href="index.html#hajj-services" id="hajj-link-ar" data-i18n="footer.hajj">خدمات الحجاج</a></li>
+                    <li><a href="index.html#faq" id="faq-link-ar" data-i18n="footer.faq">الأسئلة الشائعة</a></li>
+                    <li><a href="hotels.html" id="faq-link-ar" data-i18n="footer.hotels">فنادق</a></li>
+                    <li><a href="book.html" id="book-link-ar" data-i18n="footer.book">احجز الآن</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3 id="contact-us-ar" data-i18n="footer.contact">تواصل معنا</h3>
+                <p>
+                    <i class="fas fa-phone"></i>
+                <span dir="ltr">+966 54 630 1944</span>
+</p>
+                <p><i class="fas fa-envelope"></i> majidmohammed1545@gmail.com</p>
+                <p><i class="fab fa-whatsapp"></i> <span id="wa-contact-ar" data-i18n="footer.whatsapp">واتساب مباشر</span></p>
+                <p><i class="fas fa-clock"></i> <span id="support-ar" data-i18n="footer.support">دعم 24 ساعة يوميًا</span></p>
+            </div>
+        </div>
+            <div class="copyright">
+            © 2025 <span id="copyright-ar" data-i18n="footer.copyright">دربك - جميع الحقوق محفوظة</span>
+        </div>
+    </footer>
+
+    <div class="floating">
+        <a href="tel:+966546301944" class="float-btn phone"><i class="fas fa-phone"></i></a>
+        <a href="https://wa.me/966546301944" target="_blank" class="float-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="book.html" class="float-btn book"><i class="fas fa-car"></i></a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/i18n.js"></script>
+
+<script>
+    // FAQ Toggle (إذا كان هناك FAQ، لكن هنا لا يوجد)
+    // document.querySelectorAll('.faq-question').forEach(item => {
+    //     item.addEventListener('click', () => {
+    //         const parent = item.parentElement;
+    //         document.querySelectorAll('.faq-item').forEach(other => {
+    //             if (other !== parent) {
+    //                 other.classList.remove('active');
+    //                 other.querySelector('.icon').textContent = '+';
+    //             }
+    //         });
+    //         parent.classList.toggle('active');
+    //         item.querySelector('.icon').textContent = parent.classList.contains('active') ? '−' : '+';
+    //     });
+    // });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const navLinks = document.querySelectorAll('#navbarNav .nav-link, #navbarNav .cmn-btn');
+        navLinks.forEach(function (link) {
+            link.addEventListener("click", function () {
+                const navbarCollapse = document.getElementById('navbarNav');
+                const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
+                bsCollapse.hide();
+            });
+        });
+    });
+
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+
+    // Load dark mode from localStorage
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        body.classList.add('dark');
+        darkModeToggle.textContent = '☀️';
+    }
+
+    darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        if (body.classList.contains('dark')) {
+            localStorage.setItem('darkMode', 'enabled');
+            darkModeToggle.textContent = '☀️';
+        } else {
+            localStorage.setItem('darkMode', 'disabled');
+            darkModeToggle.textContent = '🌙';
+        }
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="ar" dir="rtl" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+  <title>احجز رحلتك الفاخرة مع دربك - نقل آمن ومريح</title>
+  <meta name="description" content="احجز رحلتك الفاخرة مع دربك. خدمة نقل آمنة وفاخرة بين المدن والمطارات، مع سائقين محترفين وخيارات متعددة للرحلات.">
+  <meta name="keywords" content="حجز رحلة, دربك, نقل فاخر, VIP, مطار, مدينة, رحلة خاصة"><!-- Open Graph -->
+  <meta property="og:title" content="احجز رحلتك الفاخرة مع دربك - نقل آمن ومريح">
+  <meta property="og:description" content="احجز رحلتك الفاخرة مع دربك. خدمة نقل آمنة وفاخرة بين المدن والمطا��ات�� مع سائقين محترفين وخيارات متعددة للرحلات.">
+  <meta property="og:image" content="https://i.imgur.com/8Y8oL2J.jpg">
+  <meta property="og:url" content="https://darbak.site/booking.html">
+  <meta property="og:type" content="website"><!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="احجز رحلتك الفاخرة مع دربك - نقل آمن ومريح">
+  <meta name="twitter:description" content="احجز رحلتك الفاخرة مع دربك. خدمة نقل آمنة وفاخرة بين المدن والمطارات، مع سائقين محترفين وخيارات متعددة للرحلات.">
+  <meta name="twitter:image" content="https://i.imgur.com/8Y8oL2J.jpg">
+  <meta name="theme-color" content="#34495e">
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        * { 
+            font-family: 'Almarai', sans-serif; 
+        }
+        .hero-pattern {
+            background-image: 
+                linear-gradient(30deg, rgba(44, 62, 80, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(44, 62, 80, 0.05) 87.5%, rgba(44, 62, 80, 0.05)),
+                linear-gradient(150deg, rgba(44, 62, 80, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(44, 62, 80, 0.05) 87.5%, rgba(44, 62, 80, 0.05)),
+                linear-gradient(30deg, rgba(44, 62, 80, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(44, 62, 80, 0.05) 87.5%, rgba(44, 62, 80, 0.05)),
+                linear-gradient(150deg, rgba(44, 62, 80, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(44, 62, 80, 0.05) 87.5%, rgba(44, 62, 80, 0.05));
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px;
+        }
+        .input-focus:focus {
+            outline: none;
+            border-color: #b89b7f;
+            box-shadow: 0 0 0 3px rgba(184, 155, 127, 0.2);
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+ </head>
+ <body class="h-full">
+  <div id="app" class="w-full h-full overflow-auto"></div>
+  <script>
+        const defaultConfig = {
+            background_color: "#f8f9fa",
+            surface_color: "#ffffff",
+            text_color: "#2c3e50",
+            primary_action_color: "#b89b7f",
+            secondary_action_color: "#25D366",
+            font_family: "Almarai",
+            font_size: 16,
+            company_name: "دربك",
+            company_tagline: "حلتك معنا.. أمان وفخامة",
+            hero_title: "احجز رحلتك الفاخرة الآن",
+            hero_subtitle: "خدمة نقل آمنة ومريحة بين المدن والمطارات",
+            submit_button_text: "إرسال الحجز عبر واتساب",
+            success_message: "تم إرسال حجزك بنجاح!"
+        };
+
+        let bookings = [];
+
+        const dataHandler = {
+            onDataChanged(data) {
+                bookings = data;
+            }
+        };
+
+        async function initApp() {
+            if (window.dataSdk) {
+                const result = await window.dataSdk.init(dataHandler);
+                if (!result.isOk) {
+                    console.error("Failed to initialize data SDK");
+                }
+            }
+
+            if (window.elementSdk) {
+                await window.elementSdk.init({
+                    defaultConfig,
+                    onConfigChange,
+                    mapToCapabilities,
+                    mapToEditPanelValues
+                });
+            }
+
+            render();
+        }
+
+        function render() {
+            const config = window.elementSdk?.config || defaultConfig;
+            const app = document.getElementById('app');
+            
+            app.innerHTML = `
+                <div style="background-color: ${config.background_color}; min-height: 100%;">
+                    <!-- Header -->
+                    <header style="background-color: ${config.text_color}; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+                        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
+                            <div>
+                                <h1 style="color: ${config.primary_action_color}; font-size: ${config.font_size * 1.8}px; font-family: '${config.font_family}', sans-serif; margin: 0; font-weight: 800;">
+                                    ${config.company_name}
+                                </h1>
+                                <p style="color: ${config.surface_color}; font-size: ${config.font_size * 1.1}px; font-family: '${config.font_family}', sans-serif; margin: 0.5rem 0 0 0;">
+                                    ${config.company_tagline}
+                                </p>
+                            </div>
+                            <a href="index.html" style="background-color: ${config.primary_action_color}; color: ${config.surface_color}; font-size: ${config.font_size}px; font-weight: 700; padding: 0.8rem 1.5rem; border: none; border-radius: 30px; cursor: pointer; transition: all 0.3s ease; font-family: '${config.font_family}', sans-serif; white-space: nowrap; box-shadow: 0 2px 10px rgba(184, 155, 127, 0.3); text-decoration: none; display: inline-block;" id="homeBtn">
+                                <i class="fas fa-home" style="margin-left: 0.5rem;"></i>
+                                الصفحة الرئيسية
+                            </a>
+                        </div>
+                    </header>
+
+                    <!-- Hero Section -->
+                    <div class="hero-pattern" style="background-color: ${config.text_color}; padding: 4rem 1.5rem; text-align: center;">
+                        <div style="max-width: 900px; margin: 0 auto;">
+                            <h2 style="color: ${config.primary_action_color}; font-size: ${config.font_size * 2.5}px; font-family: '${config.font_family}', sans-serif; margin: 0 0 1rem 0; font-weight: 800; text-shadow: 0 3px 10px rgba(0,0,0,0.5);">
+                                ${config.hero_title}
+                            </h2>
+                            <p style="color: ${config.surface_color}; font-size: ${config.font_size * 1.3}px; font-family: '${config.font_family}', sans-serif; margin: 0;">
+                                ${config.hero_subtitle}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Booking Form -->
+                    <div style="max-width: 1100px; margin: -3rem auto 4rem; padding: 3rem 2rem; background-color: ${config.surface_color}; border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.15);">
+                        <form id="bookingForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                            <!-- Name -->
+                            <div>
+                                <label for="name" style="display: block; font-size: ${config.font_size * 1.1}px; color: ${config.text_color}; margin-bottom: 0.5rem; font-weight: 700; font-family: '${config.font_family}', sans-serif;">
+                                    <i class="fas fa-user" style="margin-left: 0.5rem; color: ${config.primary_action_color};"></i>
+                                    الاسم الكامل
+                                </label>
+                                <input type="text" id="name" required 
+                                    class="input-focus"
+                                    onkeypress="return /^[\u0600-\u06FFa-zA-Z\s]+$/.test(event.key)"
+                                    onpaste="event.preventDefault(); const text = (event.clipboardData || window.clipboardData).getData('text'); this.value += text.replace(/[0-9]/g, '');"
+                                    style="width: 100%; padding: 1rem; border-radius: 12px; border: 2px solid #ddd; font-size: ${config.font_size}px; font-family: '${config.font_family}', sans-serif; background-color: ${config.surface_color}; color: ${config.text_color};">
+                            </div>
+
+                            <!-- Phone -->
+                            <div>
+                                <label for="phone" style="display: block; font-size: ${config.font_size * 1.1}px; color: ${config.text_color}; margin-bottom: 0.5rem; font-weight: 700; font-family: '${config.font_family}', sans-serif;">
+                                    <i class="fas fa-phone" style="margin-left: 0.5rem; color: ${config.primary_action_color};"></i>
+                                    رقم الجوال
+                                </label>
+                                <input type="tel" id="phone" required 
+                                    class="input-focus"
+                                    onkeypress="return /[0-9+]/.test(event.key)"
+                                    onpaste="event.preventDefault(); const text = (event.clipboardData || window.clipboardData).getData('text'); this.value += text.replace(/[^0-9+]/g, '');"
+                                    style="width: 100%; padding: 1rem; border-radius: 12px; border: 2px solid #ddd; font-size: ${config.font_size}px; font-family: '${config.font_family}', sans-serif; background-color: ${config.surface_color}; color: ${config.text_color};">
+                            </div>
+
+                            <!-- From City -->
+                            <div>
+                                <label for="fromCity" style="display: block; font-size: ${config.font_size * 1.1}px; color: ${config.text_color}; margin-bottom: 0.5rem; font-weight: 700; font-family: '${config.font_family}', sans-serif;">
+                                    <i class="fas fa-map-marker-alt" style="margin-left: 0.5rem; color: ${config.primary_action_color};"></i>
+                                    من مدينة
+                                </label>
+                                <select id="fromCity" required 
+                                    class="input-focus"
+                                    style="width: 100%; padding: 1rem; border-radius: 12px; border: 2px solid #ddd; font-size: ${config.font_size}px; font-family: '${config.font_family}', sans-serif; background-color: ${config.surface_color}; color: ${config.text_color};">
+                                    <option value="">اختر المدينة</option>
+                                    <option value="الرياض">الرياض</option>
+                                    <option value="جدة">جدة</option>
+                                    <option value="مكة">مكة المكرمة</option>
+                                    <option value="المدينة">المدينة المنورة</option>
+                                    <option value="الدمام">الدمام</option>
+                                    <option value="الخبر">الخبر</option>
+                                    <option value="أبها">أبها</option>
+                                    <option value="تبوك">تبوك</option>
+                                </select>
+                            </div>
+
+                            <!-- To City -->
+                            <div>
+                                <label for="toCity" style="display: block; font-size: ${config.font_size * 1.1}px; color: ${config.text_color}; margin-bottom: 0.5rem; font-weight: 700; font-family: '${config.font_family}', sans-serif;">
+                                    <i class="fas fa-map-marker-alt" style="margin-left: 0.5rem; color: ${config.primary_action_color};"></i>
+                                    إلى مدينة
+                                </label>
+                                <select id="toCity" required 
+                                    class="input-focus"
+                                    style="width: 100%; padding: 1rem; border-radius: 12px; border: 2px solid #ddd; font-size: ${config.font_size}px; font-family: '${config.font_family}', sans-serif; background-color: ${config.surface_color}; color: ${config.text_color};">
+                                    <option value="">اختر المدينة</option>
+                                    <option value="الرياض">الرياض</option>
+                                    <option value="جدة">جدة</option>
+                                    <option value="مكة">مكة المكرمة</option>
+                                    <option value="المدينة">المدينة المنورة</option>
+                                    <option value="الدمام">الدمام</option>
+                                    <option value="الخبر">الخبر</option>
+                                    <option value="أبها">أبها</option>
+                                    <option value="تبوك">تبوك</option>
+                                </select>
+                            </div>
+
+                            <!-- Trip Date -->
+                            <div>
+                                <label for="tripDate" style="display: block; font-size: ${config.font_size * 1.1}px; color: ${config.text_color}; margin-bottom: 0.5rem; font-weight: 700; font-family: '${config.font_family}', sans-serif;">
+                                    <i class="fas fa-calendar" style="margin-left: 0.5rem; color: ${config.primary_action_color};"></i>
+                                    تاريخ الرحة
+                                </label>
+                                <input type="date" id="tripDate" required 
+                                    class="input-focus"
+                                    style="width: 100%; padding: 1rem; border-radius: 12px; border: 2px solid #ddd; font-size: ${config.font_size}px; font-family: '${config.font_family}', sans-serif; background-color: ${config.surface_color}; color: ${config.text_color};">
+                            </div>
+
+                            <!-- Trip Time -->
+                            <div>
+                                <label for="tripTime" style="display: block; font-size: ${config.font_size * 1.1}px; color: ${config.text_color}; margin-bottom: 0.5rem; font-weight: 700; font-family: '${config.font_family}', sans-serif;">
+                                    <i class="fas fa-clock" style="margin-left: 0.5rem; color: ${config.primary_action_color};"></i>
+                                    وقت الرحلة
+                                </label>
+                                <input type="time" id="tripTime" required 
+                                    class="input-focus"
+                                    style="width: 100%; padding: 1rem; border-radius: 12px; border: 2px solid #ddd; font-size: ${config.font_size}px; font-family: '${config.font_family}', sans-serif; background-color: ${config.surface_color}; color: ${config.text_color};">
+                            </div>
+
+                            <!-- Passengers -->
+                            <div>
+                                <label for="passengers" style="display: block; font-size: ${config.font_size * 1.1}px; color: ${config.text_color}; margin-bottom: 0.5rem; font-weight: 700; font-family: '${config.font_family}', sans-serif;">
+                                    <i class="fas fa-users" style="margin-left: 0.5rem; color: ${config.primary_action_color};"></i>
+                                    عدد المسافرين
+                                </label>
+                                <select id="passengers" required 
+                                    class="input-focus"
+                                    style="width: 100%; padding: 1rem; border-radius: 12px; border: 2px solid #ddd; font-size: ${config.font_size}px; font-family: '${config.font_family}', sans-serif; background-color: ${config.surface_color}; color: ${config.text_color};">
+                                    <option value="1">1 شخص</option>
+                                    <option value="2">2 شخص</option>
+                                    <option value="3">3 أشخاص</option>
+                                    <option value="4">4 أشخاص</option>
+                                    <option value="5">5 أشخاص</option>
+                                    <option value="6">6+ أشخاص</option>
+                                </select>
+                            </div>
+
+                            <!-- Trip Type -->
+                            <div>
+                                <label for="tripType" style="display: block; font-size: ${config.font_size * 1.1}px; color: ${config.text_color}; margin-bottom: 0.5rem; font-weight: 700; font-family: '${config.font_family}', sans-serif;">
+                                    <i class="fas fa-car" style="margin-left: 0.5rem; color: ${config.primary_action_color};"></i>
+                                    نوع الرحلة
+                                </label>
+                                <select id="tripType" required 
+                                    class="input-focus"
+                                    style="width: 100%; padding: 1rem; border-radius: 12px; border: 2px solid #ddd; font-size: ${config.font_size}px; font-family: '${config.font_family}', sans-serif; background-color: ${config.surface_color}; color: ${config.text_color};">
+                                    <option value="اقتصادية">اقتصادي</option>
+                                    <option value="مريحة">مريحة</option>
+                                    <option value="فاخرة VIP">فاخرة VIP</option>
+                                </select>
+                            </div>
+
+                            <!-- Car Selection -->
+                            <div>
+                                <label for="carType" style="display: block; font-size: ${config.font_size * 1.1}px; color: ${config.text_color}; margin-bottom: 0.5rem; font-weight: 700; font-family: '${config.font_family}', sans-serif;">
+                                    <i class="fas fa-car-side" style="margin-left: 0.5rem; color: ${config.primary_action_color};"></i>
+                                    نوع السيارة
+                                </label>
+                                <select id="carType" required 
+                                    class="input-focus"
+                                    style="width: 100%; padding: 1rem; border-radius: 12px; border: 2px solid #ddd; font-size: ${config.font_size}px; font-family: '${config.font_family}', sans-serif; background-color: ${config.surface_color}; color: ${config.text_color};">
+                                    <option value="">اختر السيارة</option>
+                                    <option value="Toyota Camry 2025">Toyota Camry 2025</option>
+                                    <option value="Land Cruiser 2025">Land Cruiser 2025</option>
+                                    <option value="Mercedes S-Class 2025">Mercedes S-Class 2025</option>
+                                    <option value="Lexus LS 2025">Lexus LS 2025</option>
+                                    <option value="Range Rover 2025">Range Rover 2025</option>
+                                    <option value="GMC Yukon 2025">GMC Yukon 2025</option>
+                                    <option value="Toyota Hiace 2025">Toyota Hiace 2025</option>
+                                    <option value="Ford Taurus 2025">Ford Taurus 2025</option>
+                                    <option value="Lexus LX 570 2025">Lexus LX 570 2025</option>
+                                    <option value="Toyota Crown 2025">Toyota Crown 2025</option>
+                                    <option value="Mercedes-Benz V-Class 2025">Mercedes-Benz V-Class 2025</option>
+                                </select>
+                            </div>
+
+                            <!-- Extra Services -->
+                            <div style="grid-column: 1 / -1;">
+                                <label style="display: block; font-size: ${config.font_size * 1.1}px; color: ${config.text_color}; margin-bottom: 1rem; font-weight: 700; font-family: '${config.font_family}', sans-serif;">
+                                    <i class="fas fa-star" style="margin-left: 0.5rem; color: ${config.primary_action_color};"></i>
+                                    خدمات إضافية
+                                </label>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: ${config.font_size * 0.95}px; font-family: '${config.font_family}', sans-serif; cursor: pointer;">
+                                        <input type="checkbox" value="واي فاي" class="extra-service" style="width: 1.2rem; height: 1.2rem; cursor: pointer; accent-color: ${config.primary_action_color};">
+                                        واي فاي مجاني
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: ${config.font_size * 0.95}px; font-family: '${config.font_family}', sans-serif; cursor: pointer;">
+                                        <input type="checkbox" value="مياه باردة" class="extra-service" style="width: 1.2rem; height: 1.2rem; cursor: pointer; accent-color: ${config.primary_action_color};">
+                                        مياه باردة
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: ${config.font_size * 0.95}px; font-family: '${config.font_family}', sans-serif; cursor: pointer;">
+                                        <input type="checkbox" value="مجلات وصحف" class="extra-service" style="width: 1.2rem; height: 1.2rem; cursor: pointer; accent-color: ${config.primary_action_color};">
+                                        مجلات وصحف
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: ${config.font_size * 0.95}px; font-family: '${config.font_family}', sans-serif; cursor: pointer;">
+                                        <input type="checkbox" value="كرسي أطفال" class="extra-service" style="width: 1.2rem; height: 1.2rem; cursor: pointer; accent-color: ${config.primary_action_color};">
+                                        كرسي أطفال
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Notes -->
+                            <div style="grid-column: 1 / -1;">
+                                <label for="notes" style="display: block; font-size: ${config.font_size * 1.1}px; color: ${config.text_color}; margin-bottom: 0.5rem; font-weight: 700; font-family: '${config.font_family}', sans-serif;">
+                                    <i class="fas fa-comment" style="margin-left: 0.5rem; color: ${config.primary_action_color};"></i>
+                                    ملاحظات إضافية
+                                </label>
+                                <textarea id="notes" rows="4" 
+                                    class="input-focus"
+                                    placeholder="أخبرنا بأي متطلبات خاصة..."
+                                    style="width: 100%; padding: 1rem; border-radius: 12px; border: 2px solid #ddd; font-size: ${config.font_size}px; font-family: '${config.font_family}', sans-serif; resize: vertical; background-color: ${config.surface_color}; color: ${config.text_color};"></textarea>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div style="grid-column: 1 / -1; text-align: center;">
+                                <button type="submit" id="submitBtn"
+                                    style="background-color: ${config.primary_action_color}; color: ${config.surface_color}; font-size: ${config.font_size * 1.2}px; font-weight: 700; padding: 1.2rem 3rem; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(184, 155, 127, 0.4); font-family: '${config.font_family}', sans-serif; display: inline-flex; align-items: center; gap: 0.7rem;">
+                                    <i class="fab fa-whatsapp" style="font-size: ${config.font_size * 1.5}px;"></i>
+                                    ${config.submit_button_text}
+                                </button>
+                            </div>
+
+                            <!-- Success Message -->
+                            <div id="successMessage" style="grid-column: 1 / -1; display: none; text-align: center; padding: 1.5rem; background-color: ${config.secondary_action_color}; color: white; border-radius: 12px; font-size: ${config.font_size * 1.1}px; font-family: '${config.font_family}', sans-serif;">
+                                <i class="fas fa-check-circle" style="margin-left: 0.5rem; font-size: ${config.font_size * 1.5}px;"></i>
+                                ${config.success_message}
+                                <div style="margin-top: 1rem;">
+                                    <button id="backHomeBtn" style="background-color: white; color: ${config.secondary_action_color}; font-size: ${config.font_size}px; font-weight: 700; padding: 0.8rem 2rem; border: none; border-radius: 30px; cursor: pointer; transition: all 0.3s ease; font-family: '${config.font_family}', sans-serif;">
+                                        <i class="fas fa-home" style="margin-left: 0.5rem;"></i>
+                                        العودة للصفحة الرئيسية
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Footer -->
+                    <footer style="background-color: ${config.text_color}; color: ${config.surface_color}; text-align: center; padding: 2rem 1rem;">
+                        <p style="margin: 0; font-size: ${config.font_size * 0.9}px; font-family: '${config.font_family}', sans-serif;">
+                            © 2024 ${config.company_name} - جميع الحقوق محفوظة
+                        </p>
+                    </footer>
+                </div>
+            `;
+
+            // Add event listeners
+            const form = document.getElementById('bookingForm');
+            const submitBtn = document.getElementById('submitBtn');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin" style="margin-left: 0.5rem;"></i> جاري الإرسال...`;
+
+                const formData = {
+                    booking_id: 'BK' + Date.now(),
+                    name: document.getElementById('name').value,
+                    phone: document.getElementById('phone').value,
+                    from_city: document.getElementById('fromCity').value,
+                    to_city: document.getElementById('toCity').value,
+                    trip_date: document.getElementById('tripDate').value,
+                    trip_time: document.getElementById('tripTime').value,
+                    passengers: parseInt(document.getElementById('passengers').value),
+                    trip_type: document.getElementById('tripType').value,
+                    car_type: document.getElementById('carType').value,
+                    extra_services: Array.from(document.querySelectorAll('.extra-service:checked'))
+                        .map(cb => cb.value).join(', ') || 'لا يوجد',
+                    notes: document.getElementById('notes').value || 'لا توجد ملاحظات',
+                    submitted_at: new Date().toISOString()
+                };
+
+                if (window.dataSdk) {
+                    const result = await window.dataSdk.create(formData);
+                    if (result.isOk) {
+                        // Create WhatsApp message
+                        const whatsappMessage = `🎫 *حجز رحلة جديدة - ${config.company_name}*
+
+🔢 *رقم الحجز:* ${formData.booking_id}
+
+👤 *الاسم:* ${formData.name}
+📱 *الجوال:* ${formData.phone}
+
+🚗 *تفاصيل الرحلة:*
+📍 من: ${formData.from_city}
+📍 إلى: ${formData.to_city}
+📅 التاريخ: ${formData.trip_date}
+⏰ الوقت: ${formData.trip_time}
+👥 عدد المسافرين: ${formData.passengers}
+✨ نوع الرحلة: ${formData.trip_type}
+🚙 نوع السيارة: ${formData.car_type}
+
+⭐ *الخدمات الإضافية:*
+${formData.extra_services}
+
+📝 *ملاحظات:*
+${formData.notes}`;
+{}
+                        const encodedMessage = encodeURIComponent(message);
+                        const whatsappURL = `https://wa.me/966546301944?text=${encodedMessage}`;
+                        window.open(whatsappURL, '_blank');
+                    }
+
+                        // Show success message
+                        document.getElementById('successMessage').style.display = 'block';
+                        form.reset();
+
+                        setTimeout(() => {
+                            document.getElementById('successMessage').style.display = 'none';
+                        }, 5000);
+                    } else {
+                        const errorDiv = document.createElement('div');
+                        errorDiv.style.cssText = `grid-column: 1 / -1; text-align: center; padding: 1.5rem; background-color: #e74c3c; color: white; border-radius: 12px; font-size: ${config.font_size * 1.1}px; font-family: '${config.font_family}', sans-serif;`;
+                        errorDiv.innerHTML = '<i class="fas fa-exclamation-circle" style="margin-left: 0.5rem;"></i> حدث خطأ أثناء حفظ الحجز. يرجى المحا��ل�� مرة أخرى.';
+                        form.appendChild(errorDiv);
+                        
+                        setTimeout(() => errorDiv.remove(), 5000);
+                    }
+                }
+
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fab fa-whatsapp" style="font-size: ${config.font_size * 1.5}px; margin-left: 0.5rem;"></i> ${config.submit_button_text}`;
+            });
+
+            // Hover effect for submit button
+            submitBtn.addEventListener('mouseenter', () => {
+                submitBtn.style.transform = 'scale(1.05)';
+                submitBtn.style.boxShadow = '0 6px 25px rgba(184, 155, 127, 0.6)';
+            });
+
+            submitBtn.addEventListener('mouseleave', () => {
+                submitBtn.style.transform = 'scale(1)';
+                submitBtn.style.boxShadow = '0 4px 15px rgba(184, 155, 127, 0.4)';
+            });
+
+            // Back to home button
+            const backHomeBtn = document.getElementById('backHomeBtn');
+            if (backHomeBtn) {
+                backHomeBtn.addEventListener('click', () => {
+                    window.location.href = 'index.html';
+                });
+            }
+
+            // Home button in header
+            const homeBtn = document.getElementById('homeBtn');
+            if (homeBtn) {
+                homeBtn.addEventListener('mouseenter', () => {
+                    homeBtn.style.transform = 'scale(1.05)';
+                    homeBtn.style.boxShadow = '0 4px 15px rgba(184, 155, 127, 0.5)';
+                });
+
+                homeBtn.addEventListener('mouseleave', () => {
+                    homeBtn.style.transform = 'scale(1)';
+                    homeBtn.style.boxShadow = '0 2px 10px rgba(184, 155, 127, 0.3)';
+                });
+            }
+        }
+
+        async function onConfigChange(config) {
+            render();
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.background_color || defaultConfig.background_color,
+                        set: (value) => {
+                            config.background_color = value;
+                            window.elementSdk.setConfig({ background_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.surface_color || defaultConfig.surface_color,
+                        set: (value) => {
+                            config.surface_color = value;
+                            window.elementSdk.setConfig({ surface_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.text_color || defaultConfig.text_color,
+                        set: (value) => {
+                            config.text_color = value;
+                            window.elementSdk.setConfig({ text_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                        set: (value) => {
+                            config.primary_action_color = value;
+                            window.elementSdk.setConfig({ primary_action_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                        set: (value) => {
+                            config.secondary_action_color = value;
+                            window.elementSdk.setConfig({ secondary_action_color: value });
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: {
+                    get: () => config.font_family || defaultConfig.font_family,
+                    set: (value) => {
+                        config.font_family = value;
+                        window.elementSdk.setConfig({ font_family: value });
+                    }
+                },
+                fontSizeable: {
+                    get: () => config.font_size || defaultConfig.font_size,
+                    set: (value) => {
+                        config.font_size = value;
+                        window.elementSdk.setConfig({ font_size: value });
+                    }
+                }
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["company_name", config.company_name || defaultConfig.company_name],
+                ["company_tagline", config.company_tagline || defaultConfig.company_tagline],
+                ["hero_title", config.hero_title || defaultConfig.hero_title],
+                ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+                ["submit_button_text", config.submit_button_text || defaultConfig.submit_button_text],
+                ["success_message", config.success_message || defaultConfig.success_message]
+            ]);
+        }
+
+        initApp();
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b629a457629cd8f',t:'MTc2NzEwODg4MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
